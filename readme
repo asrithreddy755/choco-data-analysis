@@ -1,0 +1,47 @@
+# Chocolate Shipments Performance Dashboard
+
+## Overview
+This repository contains a Business Intelligence and data analysis project focused on tracking and analyzing global chocolate shipments. The analysis is presented through a comprehensive Power BI dashboard that monitors key performance indicators (KPIs) such as total revenue, profit margins, geographical distribution, and the performance of individual sales representatives and products. 
+
+## Data Source
+The data powering this dashboard is sourced from the dataset provided in the file: **sample-chocolate-shipments-data-all-Apr-2025 (1).xlsx**. Additional report references can be found in **choco.pdf**.
+
+## Key Performance Indicators (KPIs)
+Based on the dashboard report, the following overall metrics were recorded for the period between January 1, 2023, and March 31, 2025:
+*   **Total Amount (Revenue):** $141.49M
+*   **Total Profit:** $81.10M
+*   **Profit Margin:** 57.32%
+*   **Total Boxes Shipped:** 9M
+*   **Shipment Count:** 25K
+
+## Dashboard Features and Visuals
+The Power BI Desktop dashboard provides a detailed breakdown of the business through various interactive visualizations:
+*   **Time Intelligence:** Displays Current Year (CY) vs Previous Year (PY) comparisons for both Total Amount and Boxes Shipped over time (e.g., September 2024 to March 2025).
+*   **Geographical Analysis:** The "Amount by Geo" visual highlights the top global markets. India leads with $40.41M (28.56%) of the total amount. Australia follows closely with $29.84M (21.09%). Other key regions include the UK ($10.23M), Canada ($10.01M), New Zealand, and the USA.
+*   **Team Performance:** A table highlights the top 5 sales members by total amount and profit percentage. The top performers are Ponnan ($11.7m, 58.85%), Duran ($9.2m, 57.87%), Suman ($10.5m, 57.62%), John ($8.4m, 57.12%), and Subbarao ($8.1m, 56.25%).
+*   **Product Performance:** Showcases the top 5 products by revenue, including Organic Choco, Caramel Stuff, Smooth Sil, 99% Dark, and Almond. It also includes a detailed list of products like Peanut Butter Cubes (which boasts a 90.26% profit margin) and Raspberry Choco (84.70% profit margin).
+*   **Distribution Analysis:** Includes a shipment count distributed by boxes to analyze order sizes.
+
+## Data Model & Schema
+The project utilizes a relational star schema structure. 
+
+### Dimension Tables:
+*   `Calendar`: Includes date hierarchy fields (`cal_date`, `month_name`, `Month_num`, `Start of Month`, `weekday_name`, `year`).
+*   `locations`: Stores geographical dimensions.
+*   `people`: Stores sales representative information.
+*   `products`: Stores product categories and details.
+
+### Fact Table (`shipments`):
+Contains the core transactional data and several calculated DAX measures used for the visuals:
+*   **Base Columns:** `Amount`, `Boxes`, `making cost`, `Order_Status`, `Shipdate`, `GID`, `PID`, `SPID`, `ShipmentID`.
+*   **Calculated Measures:** `Last Year Total Amount`, `Last Year Total Boxes`, `Profit %`, `Shipment Count`, `Total Amount`, `Total costs`, `Total profit`, and `Boxes (bins)`.
+
+## Tools & Technologies
+*   **Data Visualization:** Power BI Desktop
+*   **Data Source:** Microsoft Excel (`sample-chocolate-shipments-data-all-Apr-2025 (1).xlsx`)
+
+## How to Use
+1. Clone this repository to your local machine.
+2. Ensure you have Power BI Desktop installed.
+3. Open the `.pbix` file to view and interact with the dashboard.
+4. To refresh the data, update the data source settings in Power BI to point to the local path of your `sample-chocolate-shipments-data-all-Apr-2025 (1).xlsx` file.
